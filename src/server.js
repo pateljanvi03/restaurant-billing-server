@@ -33,7 +33,7 @@ app.use("/", categoryController);
 app.use("/", ItemController);
 app.use("/", OrderController);
 app.use("/", WaitingListController);
-app.use("/", TaxController);
+app.use("/", TaxController);  
 
 const start = () => {
   connect().then(() => {

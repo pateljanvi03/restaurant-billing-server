@@ -126,7 +126,7 @@ router.get("/stats/orders-amount/:type", auth.userAuth, async (req, res) => {
     } else if (type == "monthly") {
       startDate = dayjs().subtract(1, "month");
     } else {
-      startDate = dayjs();
+      startDate = dayjs().subtract(1, "day");
     }
 
     const data = await Order.aggregate([
