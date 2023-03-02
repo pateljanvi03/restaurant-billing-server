@@ -126,7 +126,7 @@ router.get("/stats/orders-amount/:type", auth.userAuth, async (req, res) => {
     } else if (type == "monthly") {
       startDate = dayjs().subtract(1, "month");
     } else {
-      startDate = dayjs().subtract(1, "days");
+      startDate = dayjs().subtract(1, "day");
     }
 
     const data = await Order.aggregate([
@@ -149,6 +149,7 @@ router.get("/stats/orders-amount/:type", auth.userAuth, async (req, res) => {
     ]);
 
     const totalAmount = data[0]?.total || 0;
+    console.log(totalAmount);
     return res.json({ totalAmount });
   } catch (err) {
     console.error(err);
@@ -168,7 +169,7 @@ router.get("/stats/orders-count/:duration", auth.userAuth, async (req, res) => {
     } else if (duration == "monthly") {
       startDate = dayjs().subtract(1, "month");
     } else {
-      startDate = dayjs().subtract(1, "days");
+      startDate = dayjs().subtract(1, "day");
     }
 
     const count = await Order.countDocuments({

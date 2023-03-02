@@ -32,7 +32,7 @@ router.get("/tables", auth.userAuth, async (req, res) => {
     res.status(200).json(response);
   } catch (err) {
     console.error(err);
-    res.status(200).json({ message: err?.message });
+    res.status(400).json({ message: err?.message });
   }
 });
 
